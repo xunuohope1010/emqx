@@ -28,7 +28,7 @@ extra_deps() ->
     {ok, Proplist} = file:consult("lib-extra/plugins"),
     ErlPlugins0 = proplists:get_value(erlang_plugins, Proplist),
     ExPlugins0 = proplists:get_value(elixir_plugins, Proplist),
-    Filter = string:split(os:getenv("EMQX_EXTRA_PLUGINS", ""), ",", all),
+    Filter = string:split(os:getenv("EMQX_EXTRA_PLUGINS", "emqx_plugin_template"), ",", all),
     ErlPlugins = filter_extra_deps(ErlPlugins0, Filter),
     ExPlugins = filter_extra_deps(ExPlugins0, Filter),
     {ExPlugins =/= [], ErlPlugins ++ ExPlugins}.
